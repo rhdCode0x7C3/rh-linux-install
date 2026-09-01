@@ -5,11 +5,13 @@
 
 set -euo pipefail
 
-lsblk -d
-
 echo "Select the device you want to install Void Linux to:"
 
 readarray drives -t < <(lsblk -d | tail -n +2 | awk '{print $1}')
+
+for drive in drives; do
+  echo "1 $drive"
+done
 
 read -p "/dev/" INSTALL_DRIVE
 
