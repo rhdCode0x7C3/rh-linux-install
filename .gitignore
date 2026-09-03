@@ -1,0 +1,22 @@
+# Generated VMs
+vm_*
+
+# macOS
+._*
+.DS_Store
+.LSOverride
+
+# Backups
+*.bak
+
+# Logs
+*.log
+log/
+logs/
+
+# Temporary
+*~
+*.tmp
+*.temp
+tmp/
+temp/
