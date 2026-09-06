@@ -5,5 +5,4 @@
 
 set -euo pipefail
 
-echo "Running cleanup"
-rm /tmp/rh-linux-install.*
+rm "$TEMPFILE"

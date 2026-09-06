@@ -4,5 +4,4 @@
 # Written by rh 2026-09-02
 
 set -euo pipefail
-
-TEMPFILE=$(mktemp /tmp/rh-linux-install.XXXXXX)
+source "$ROOT_DIR/scripts/logging.sh"
