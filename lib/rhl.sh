@@ -40,7 +40,7 @@ _rhl_header() {
   local ts
   ts=$(_rhl_timestamp)
   printf "%s\n" "---"
-  printf "Caller:     %s\n" "$(cat /proc/$$/comm)"
+  printf "Caller:     %s\n" "$0"
   printf "Timestamp:  %s\n" "$ts"
   printf "Log level:  %s\n" "$level"
   printf "%s\n" "---"
@@ -48,18 +48,19 @@ _rhl_header() {
 
 _rhl_log() {
   local level=$1
-  shift
-  local message
-  message="$*"
-
-  local timestamp
-  timestamp="$(_rhl_timestamp)"
 
   local p="${_rhl_levels[$level]}"
   [[ -n "$p" ]] || return 1
 
-  # Construct log entry
+  shift
+
   if ((p >= _rhl_threshold)); then
+    local message
+    message="$*"
+
+    local timestamp
+    timestamp="$(_rhl_timestamp)"
+
     printf '[%s][%s] %s\n' "$timestamp" "$level" "$message" >>"$_rhl_output"
   fi
 }

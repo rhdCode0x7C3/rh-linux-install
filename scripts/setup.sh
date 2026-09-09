@@ -1,7 +1,15 @@
 #!/usr/bin/env bash
 # 000_setup.sh
-# Set up the key-value store
-# Written by rh 2026-09-02
+# Written by rh 2026-09-08
 
-set -euo pipefail
-source "$ROOT_DIR/scripts/logging.sh"
+run_id_gen() {
+  local timestamp
+  timestamp="$(date +%s%N)"
+
+  local uuid
+  uuid="$(uuidgen)"
+
+  printf '%s-%s' "$timestamp" "$uuid"
+}
+
+export RUN_ID=run_id_gen
