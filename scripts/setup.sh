@@ -55,16 +55,17 @@ _set_env() {
   export RHKV_CHECKPOINTS=$RUN_DIR/checkpoints && touch "$RHKV_CHECKPOINTS"
 }
 
+_get_runs() {
+  find "$FILES_DIR" \
+    -mindepth 1 -maxdepth 1 \
+    -type d -name 'run_*' |
+    sort -r
+}
 _resume_prompt() {
   echo "Select a run:"
 
   local -a runs
-  mapfile -t runs < <(
-    find "$FILES_DIR" \
-      -mindepth 1 -maxdepth 1 \
-      -type d -name 'run_*' |
-      sort -r
-  )
+  mapfile -t runs < <(_get_runs)
 
   if ((${#runs[@]} == 0)); then
     echo "No runs found."
@@ -93,7 +94,7 @@ _resume_prompt() {
   done
 }
 
-run_count="$(find $FILES_DIR -name "run_*" | wc -l)"
+run_count="$(_get_runs | wc -l)"
 if ((run_count > 0)); then
   _resume_prompt
 else
