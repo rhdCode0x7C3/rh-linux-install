@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # 000_setup.sh
 # Written by rh 2026-09-08
+j
 
 source "$SCRIPT_DIR/lib/rhl.sh"
 source "$SCRIPT_DIR/lib/rhkv.sh"

@@ -24,7 +24,7 @@ _rhl_threshold=1
 
 _rhl_timestamp() {
   # date "+%Y-%m-%d %H:%M:%S"
-  printf '%(%Y-%m-%d %H:%M:%S)T\n' -1
+  printf '%(%Y-%M-%d %H:%m:%S)T\n' -1
 }
 
 declare -A _rhl_levels=(
